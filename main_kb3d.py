@@ -78,6 +78,9 @@ if __name__ == '__main__':
 
 	process_load(npyImage, {})
 
+	print(objCommon)
+	exit()
+
 	objFrom = {
 		'fltCenterU': intWidth / 2.0,
 		'fltCenterV': intHeight / 2.0,
