@@ -29,6 +29,9 @@ import time
 import urllib
 import zipfile
 
+# Set working directory
+os.chdir("kb3d")
+
 ##########################################################
 
 assert(int(str('').join(torch.__version__.split('.')[0:2])) >= 12) # requires at least pytorch version 1.2.0
@@ -41,17 +44,17 @@ torch.backends.cudnn.enabled = True # make sure to use cudnn for computational p
 
 objCommon = {}
 
-exec(open('./kb3d/common.py', 'r').read())
+exec(open('./common.py', 'r').read())
 
-exec(open('./kb3d/models/disparity-estimation.py', 'r').read())
-exec(open('./kb3d/models/disparity-adjustment.py', 'r').read())
-exec(open('./kb3d/models/disparity-refinement.py', 'r').read())
-exec(open('./kb3d/models/pointcloud-inpainting.py', 'r').read())
+exec(open('./models/disparity-estimation.py', 'r').read())
+exec(open('./models/disparity-adjustment.py', 'r').read())
+exec(open('./models/disparity-refinement.py', 'r').read())
+exec(open('./models/pointcloud-inpainting.py', 'r').read())
 
 ##########################################################
 
-arguments_strIn = './kb3d/images/doublestrike.jpg'
-arguments_strOut = './kb3d/autozoom.mp4'
+arguments_strIn = './images/doublestrike.jpg'
+arguments_strOut = './autozoom.mp4'
 
 for strOption, strArgument in getopt.getopt(sys.argv[1:], '', [ strParameter[2:] + '=' for strParameter in sys.argv[1::2] ])[0]:
 	if strOption == '--in' and strArgument != '': arguments_strIn = strArgument # path to the input image
